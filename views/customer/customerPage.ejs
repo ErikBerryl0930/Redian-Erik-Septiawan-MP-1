@@ -1,0 +1,45 @@
+<%- include('headerCustomerPage') %>
+
+<div class="container">
+    <h1 class="text-center text fw-bold m-5">Selamat Datang <strong><%= customer.name%></strong> Di Sistem Pemesanan Makanan Digital Erik's Resto
+    </h1>
+    <div class="card text mt-4">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#"><i class="fa-solid fa-user"></i> Informasi Pengguna</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="/orders/order/<%=customer.id%>"><i class="fa-solid fa-truck-fast"> </i> Pesan Makanan</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="/orders/information/<%=customer.id%>"><i class="fa-solid fa-notes-medical"></i> Riwayat Pesanan</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/customers/login"> <i class="fa-solid fa-lock"></i> Logout</a>
+            </li>
+            </ul>
+        </div>
+        <div class="card-body bg-light">
+            <h3 class="text-muted mb-4">Informasi Pengguna</h2>
+            <img src="../images/<%= customer.image%>"
+            alt="Pengguna Tidak Memberi Gambar"
+            style="width: 160px; height: 155px"
+            class="rounded-circle shadow-lg mb-2"
+            />
+            <div class="m-3 text-secondary">
+                
+                <h5>Nama Pengguna        : <strong><%= customer.name%></strong></h5>
+                <h5>Nomor Telephone      : <strong><%= customer.phone%></strong></h5>
+                <h5>Alamat Pengguna      : <strong><%= customer.address%></strong></h5>
+            </div>
+            
+            <!-- <a href="#" class="btn btn-warning text-white shadow-lg">Edit Data</a> -->
+            <a href="/customers/editPage/<%=customer.id%>" type="button" class="btn btn-warning text-white shadow-lg">
+            Edit Data
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,128 @@
+<%- include('headerOrderPage') %>
+<div class="container">
+    <% if(orders.length !== 0)  { %>
+    <h1 class="text-center text fw-bold m-5">Riwayat Pemesanan <%= orders[0].customer.name %>
+    </h1>
+    <div class="card text-center mt-4">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="/customers/customerPage?name=<%= orders[0].customer.name %>&key=<%= orders[0].customer.key %>"><i class="fa-solid fa-user"></i> Informasi Pengguna</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="/orders/order/<%= orders[0].customer.id%>"> <i class="fa-solid fa-truck-fast"></i> Pesan Makanan</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#"><i class="fa-solid fa-notes-medical"></i> Riwayat Pesanan</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/customers/login"> <i class="fa-solid fa-lock"></i> Logout</a>
+            </li>
+            </ul>
+        </div>
+        <div class="card-body bg-light">
+            <h3 class="text-muted mb-4">Status Pesanan Anda </h2>
+            <div class="container">
+                <table class="table">
+                <thead class="bg-light">
+                    <tr>
+                    <th class="text-center">ID Pesanan</th>
+                    <th>Nama Pembeli</th>
+                    <th>Nama Makanan Yang Dipesan</th>
+                    <th>Nomor Telephone</th>
+                    <th>Alamat</th>
+                    <th class="text-center">Dipesan Pada</th>
+                    <th>Status Pesanan</th>
+                    <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% orders.forEach(order => { %>
+                    <tr>
+                        <td>
+                            <% order.id = Number(order.id) %>
+                            <p class="fw-normal mb-1 text-center"><%= order.id %> </p>
+                        </td>
+                        <td>
+                            <div class="">
+                                <p class="fw-bold mb-1 text-center"><%= order.customer.name %></p>
+                            </div>
+                        </td>
+                        <td><%= order.food.name %></td>
+                        <td><%= order.customer.phone %></td>
+                        <td><%= order.customer.address %></td>
+                        <td class="text-center"><%= `${order.updatedAt.getFullYear()}-${order.updatedAt.getMonth()+1}-${order.updatedAt.getDate()} | ${order.updatedAt.getHours()} : ${order.updatedAt.getMinutes()} : ${order.updatedAt.getSeconds()}` %></td>
+                        <td>            
+                            <% if(order.status === 'sampai') { %>
+                                <span class="text-white p-1 fw-bold btn-sm btn-success text-decoration-none"><%= order.status %></span>     
+                            <% } else if(order.status === 'dalam proses pengantaran') { %>
+                                <span class="text-white p-1 fw-bold btn-sm btn-primary text-decoration-none"><%= order.status %></span>   
+                            <% } else if(order.status === 'pending') { %>
+                                <span class="text-white p-1 fw-bold btn-sm btn-warning text-decoration-none"><%= order.status %></span>
+                            <% } else if(order.status === 'ditolak') { %>
+                                <span class="text-white p-1 fw-bold btn-sm btn-danger text-decoration-none"><%= order.status %></span>   
+                            <% } else if(order.status === 'proses memasak') { %>
+                                <span class="text-white p-1 fw-bold btn-sm btn-info text-decoration-none"><%= order.status %></span>    
+                            <% } %>   
+                        </td>
+                        <td>
+                            <% if(order.status === 'sampai') { %>
+                                <i class="fa-solid fa-thumbs-up text-success"></i> Thank You</i>
+                            <% } else if(order.status === 'ditolak'){ %>
+                                <a href="/orders/deleteOrder/<%= order.id %>" class="btn btn-sm btn-info " type="submit"><i class="fa-solid fa-circle-xmark"></i></i> Delete Cancel </a> 
+                            <% } else if(order.status === 'pending'){ %>
+                            <a href="/orders/deleteOrder/<%= order.id %>" class="btn btn-sm btn-warning " type="submit"><i class="fa-solid fa-circle-xmark"></i></i></i> Cancel </a>  
+                                <% } else if(order.status === 'proses memasak'){ %>
+                                    <i class="fa-solid fa-fire"></i>  Memasak</i> 
+                                    <% } else if(order.status === 'dalam proses pengantaran'){ %>
+                                        <i class="fa-solid fa-truck-fast"></i>  Pengantaran</i> 
+                            <% } else { %>
+                                <a href="/orders/deleteOrder/<%= order.id %>" class="btn btn-sm btn-danger " type="submit"><i class="fa-solid fa-trash-can"></i> Delete </a>     
+                            <% } %>
+                        </td>
+                    </tr>
+                    <% }) %> 
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+    <%} else { %>
+        <h1 class="text-center text-warning fw-bold m-5">Pesan Makanan </h1>
+        <div class="card text-center mt-4">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="">Identitas Pengguna</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="">Pesan Makanan</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Status Pesanan</a>
+            </li>
+            </ul>
+        </div>
+        <div class="card-body bg-light">
+            <h3 class="text-muted mb-4">Pesanan  Kosong</h2>
+            <div class="container">
+                <table class="table">
+                <thead class="bg-light">
+                    <tr>
+                    <th class="text-center">Id Pesanan</th>
+                    <th>Nama Pembeli</th>
+                    <th>Nama Makanan</th>
+                    <th>Nomor Telephone</th>
+                    <th>Alamat</th>
+                    <th class="text-center">Waktu Pesanan</th>
+                    <th>Status Pesanan</th>
+                    <th>Aksi</th>
+                    </tr>
+                </thead>
+                    </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+    <%}%> 
+</div>

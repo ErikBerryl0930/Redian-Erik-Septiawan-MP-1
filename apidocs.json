@@ -1,0 +1,486 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API Sistem Pemesanan Makanan",
+      "description": "Tugas Redian Erik Septiawan-dev",
+      "version": "1.0.0"
+    },
+    "server": [
+      {
+        "url": "http://localhost:3000",
+        "description": "localhost"
+      }
+    ],
+    "tags": [
+      {
+        "name": "Order",
+        "description": "bag Admin"
+      },
+      {
+        "name": "Customer",
+        "description": "bag Customer"
+      },{
+        
+        "name": "Food",
+        "description": "bag Food"
+      }
+    ],
+    "paths": {
+      "/orders": {
+        "get": {
+          "tags": ["Order"],
+          "summary": "All Order",
+          "description": "All Orders",
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "Selesai"
+                        },
+                        "customerId": {
+                          "type": "integer",
+                          "example": "1"
+                        },
+                        "foodId": {
+                          "type": "integer",
+                          "example": 4
+                      
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/orders/create": {
+        "post": {
+          "tags": ["Order"],
+          "summary": "1 Customer",
+          "description": "",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    
+                    "customerId": {
+                      "type": "integer",
+                      "example": "123"
+                    },
+                    "foodId": {
+                      "type": "integer",
+                      "example": 94944994
+                    }
+                    
+                  },
+                  "required": ["customerId,foodId"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+     
+      "/orders/delete/{id}": {
+        "get": {
+          "tags": ["Order"],
+          "summary": "Delete Order",
+          "description": "",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "schema": {
+                "type": "integer"
+              },
+              "description": "ID Order"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/orders/edit/{id}": {
+        "post": {
+          "tags": ["Order"],
+          "summary": "Update  Order",
+          "description": "",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "schema": {
+                "type": "integer"
+              },
+              "description": "Order ID"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "selesai"
+                    }
+                   
+                  },
+                  "required": ["status"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/customers": {
+        "get": {
+          "tags": ["Customer"],
+          "summary": "Get All Customer",
+          "description": "Get a list Of All Customer",
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Budi ABC"
+                        },
+                        "key": {
+                          "type": "string",
+                          "example": "123"
+                        },
+                        "phone": {
+                          "type": "integer",
+                          "example": 94944994
+                        },
+                        "address": {
+                          "type": "string",
+                          "example": "Pekalongan"
+                        },
+                        "image": {
+                          "type": "string",
+                          "example": "img-profil"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/customers/create": {
+        "post": {
+          "tags": ["Customer"],
+          "summary": "1 Customer",
+          "description": "",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Budi ABC"
+                    },
+                    "key": {
+                      "type": "string",
+                      "example": "123"
+                    },
+                    "phone": {
+                      "type": "integer",
+                      "example": 94944994
+                    },
+                    "address": {
+                      "type": "string",
+                      "example": "Pekalongan"
+                    },
+                    "image": {
+                      "type": "string",
+                      "example": "img-profil"
+                    }
+                  },
+                  "required": ["name", "key", "phone", "address","image"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/customers/delete/{id}": {
+        "get": {
+          "tags": ["Customer"],
+          "summary": "Delete One Customer",
+          "description": "",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "schema": {
+                "type": "integer"
+              },
+              "description": "Customer ID"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/customers/edit/{id}": {
+        "post": {
+          "tags": ["Customer"],
+          "summary": "Update Customer",
+          "description": "",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "schema": {
+                "type": "integer"
+              },
+              "description": "Customer ID"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Budi"
+                    },
+                    "key": {
+                      "type": "string",
+                      "example": "123"
+                    },
+                    "phone": {
+                      "type": "integer",
+                      "example": 94944994
+                    },
+                    "address": {
+                      "type": "string",
+                      "example": "Pekalongan"
+                    },
+                    "image": {
+                      "type": "string",
+                      "example": "img-profil"
+                    }
+                  },
+                  "required": ["name", "key", "phone", "address","image"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/foods": {
+        "get": {
+          "tags": ["Food"],
+          "summary": "Get All Food",
+          "description": "Get a list Of All Customer",
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Budi ABC"
+                        },
+                        "price": {
+                          "type": "integer",
+                          "example": "123"
+                        },
+                        "image": {
+                          "type": "string",
+                          "example": "94944994"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/foods/create": {
+        "post": {
+          "tags": ["Food"],
+          "summary": "1 Food",
+          "description": "",
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    
+                    "image": {
+                      "type": "string",
+                      "example": "img-burger"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Burger"
+                    },
+                    "price": {
+                      "type": "integer",
+                      "example": 3000
+                    }
+                  },
+                  "required": []
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/foods/delete/{id}": {
+        "get": {
+          "tags": ["Food"],
+          "summary": "Delete Food",
+          "description": "",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "schema": {
+                "type": "integer"
+              },
+              "description": "ID Food"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/foods/edit/{id}": {
+        "post": {
+          "tags": ["Food"],
+          "summary": "Food Update",
+          "description": "",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "schema": {
+                "type": "integer"
+              },
+              "description": "ID Food"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "string",
+                      "example": "img-burger"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Burger"
+                    },
+                    "price": {
+                      "type": "integer",
+                      "example": 3000
+                    }
+                  },
+                  "required": ["picture", "name", "harga"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      }
+    }
+  }

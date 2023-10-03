@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    font-size: 17px;
+}
+
+body {
+    font-family: "Fira Sans", sans-serif;
+    background-color: rgb(244, 248, 226);
+}
+
+
+/* Home Page */
+
+.img-slider {
+    margin-left: 350px;
+}
+
+.menu {
+    background: rgb(250, 252, 244);
+}
+
+.menu h1 {
+    color: red;
+}
+
+.menu-info {
+    font-style: italic;
+    opacity: 0.7
+}
+
+.footer {
+    background-color: rgb(69, 70, 66);
+    color: rgb(255, 255, 255);
+    height: 150;
+}
+
+.ig {
+    width:50px;
+    margin-top: 40px;
+}
+
+.wa {
+    width:50px;
+    margin-top: 40px;
+}
+
+.fb {
+    width:50px;
+    margin-top: 40px;
+}
+
+/* End of Home Page */
+
+
+/* Admin Page */
+body {
+  background-color: #fbfbfb;
+}
+@media (min-width: 991.98px) {
+  main {
+    padding-left: 240px;
+  }
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 58px 0 0; /* Height of navbar */
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  width: 240px;
+  z-index: 600;
+}
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+.sidebar .active {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+
+/* End of Admin Page */
+
+.tbl {
+  margin: 0 120px;
+  padding: 0.5rem;
+}
+
+/* custt */
+/* .custImg {
+  margin-left: 55px;
+} */
+
+/* customer page */
+/* .intro {
+  height: 50%;
+}
+
+@media (min-height: 300px) and (max-height: 450px) {
+  .intro {
+    height: auto;
+  }
+} */

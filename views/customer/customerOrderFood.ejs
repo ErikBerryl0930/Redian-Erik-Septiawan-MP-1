@@ -1,0 +1,50 @@
+<%- include('headerOrderPage') %>
+
+<div class="container">
+    <h1 class="text-center text fw-bold m-5"> Halaman Pemesanan Makanan
+    </h1>
+    <div class="card text-center mt-4">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="/customers/information/<%=id%>"><i class="fa-solid fa-user"></i> Informasi Pengguna</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text active" href="#"><i class="fa-solid fa-truck-fast"></i> Pesan Makanan</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="/orders/information/<%=id%>"><i class="fa-solid fa-notes-medical"></i> Riwayat Pesanan</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/customers/login"> <i class="fa-solid fa-lock"></i> Logout</a>
+            </li>
+            </ul>
+        </div>
+        <div class="card-body bg-light">
+            <h3 class="text-muted mb-4">Hai, Silahkan Masukkan ID Makanan Dengan Benar</h2>
+            <div class="container d-flex justify-content-center">
+            <!-- edit form -->
+            <form action="/orders/create" method="post">
+                    <div class="form-group mb-3">
+                        <label for="formGroupExampleInput">ID Pesanan Akun Anda</label>
+                        <input type="text" class="form-control text-center" id="formGroupExampleInput"  name="customerId" value="<%= id %>" >
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="formGroupExampleInput2">Tuliskan ID Makanan Yang Anda Pesan</label>
+                        <input type="number" class="form-control text-center" id="formGroupExampleInput2" placeholder="ID Makanan" name="foodId" value="">
+                    </div>
+              
+
+
+                    <div class="mt-3">
+                        
+                        <button class="btn btn-success fw-bold text-white shadow-sm" type="submit">Kirim</button>
+                    </div>
+            </form>
+            </div>
+            
+
+
+        </div>
+    </div>
+</div>

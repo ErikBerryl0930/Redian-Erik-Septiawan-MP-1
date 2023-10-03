@@ -1,0 +1,10 @@
+const foodRoute = require('express').Router();
+const { FoodController } = require('../controllers');
+foodRoute.post('/create', FoodController.create);
+foodRoute.get('/', FoodController.getFoods);
+foodRoute.get('/create', FoodController.createFoodPage);
+foodRoute.post('/edit/:id', FoodController.edit);
+foodRoute.get('/delete/:id', FoodController.delete);
+foodRoute.get('/information/:id', FoodController.information);
+foodRoute.get('/edit/:id', FoodController.editFoodPage);
+module.exports = foodRoute;

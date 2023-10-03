@@ -1,0 +1,15 @@
+const customerRoute = require('express').Router();
+const { CustomerController } = require('../controllers');
+customerRoute.post('/create', CustomerController.create);
+customerRoute.get('/', CustomerController.getCustomers);
+customerRoute.post('/edit/:id', CustomerController.edit);
+customerRoute.get('/create', CustomerController.createCustomerPage);
+customerRoute.get('/information/:id', CustomerController.information);
+customerRoute.get('/delete/:id', CustomerController.delete);
+customerRoute.get('/edit/:id', CustomerController.editCustomerPage);
+customerRoute.get('/login', CustomerController.loginPage);
+customerRoute.post('/register', CustomerController.register);
+customerRoute.get('/customerPage', CustomerController.costumerPage);
+customerRoute.get('/register', CustomerController.registerPage);
+customerRoute.get('/editPage/:id', CustomerController.editCustomerInformationPage);
+module.exports = customerRoute;
